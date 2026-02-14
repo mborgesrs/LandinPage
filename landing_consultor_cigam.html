@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTI Tecnologia e Gestão | Consultoria ERP, Sistemas e Integrações</title>
+  <meta name="description"
+    content="BTI Tecnologia e Gestão — Consultoria especializada em ERP CIGAM, customizações, integrações e desenvolvimento de sistemas web para empresas.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0077b6;
+      --primary-dark: #023e8a;
+      --secondary: #22c55e;
+      --text: #0f172a;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      margin: 0;
+      color: var(--text);
+      background: var(--bg-light);
+      line-height: 1.6
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 20px
+    }
+
+    .header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, .05);
+      padding: 15px 0
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .logo-box {
+      padding: 6px;
+      background: #fff;
+      border-radius: 8px;
+      display: inline-block;
+      line-height: 0
+    }
+
+    /* No header branco, usamos multiply para sumir com o fundo branco do png */
+    .nav .logo-box img {
+      height: 48px;
+      mix-blend-mode: multiply
+    }
+
+    /* Estilo para logo em fundo escuro (Hero e Footer) */
+    .logo-dark-bg {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+
+    .logo-dark-bg img {
+      filter: invert(1) grayscale(1) brightness(2);
+      mix-blend-mode: screen;
+    }
+
+    .menu a {
+      margin-left: 26px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s
+    }
+
+    .menu a:hover {
+      color: var(--primary)
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #003566, #0077b6);
+      color: #fff;
+      padding: 120px 20px;
+      text-align: center
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      margin: 24px 0;
+      font-weight: 800;
+      letter-spacing: -1px
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 760px;
+      margin: auto;
+      opacity: 0.9;
+      font-weight: 300
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: #fff;
+      padding: 18px 38px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 35px;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3)
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4)
+    }
+
+    .section {
+      padding: 100px 0
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      font-weight: 800
+    }
+
+    .grid {
+      display: grid;
+      gap: 28px
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+    }
+
+    .card {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, .04);
+      transition: 0.3s;
+      border: 1px solid rgba(0, 0, 0, 0.02)
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, .08)
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.4rem
+    }
+
+    .alt {
+      background: #f1f5f9
+    }
+
+    .dark {
+      background: #001d3d;
+      color: #fff
+    }
+
+    .dark h2 {
+      color: #fff
+    }
+
+    .dark .card {
+      background: #003566;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.05)
+    }
+
+    .dark .card h3 {
+      color: #3a86ff
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #001d3d, #003566);
+      color: #fff;
+      text-align: center
+    }
+
+    .footer {
+      background: #000814;
+      color: #94a3b8;
+      text-align: center;
+      padding: 60px 20px
+    }
+
+    .footer .logo-box {
+      margin-bottom: 20px
+    }
+
+    .footer .logo-box img {
+      height: 44px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 16px;
+      margin: 12px 0;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      font-family: inherit;
+      font-size: 1rem;
+      background: #f8fafc
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1)
+    }
+
+    form {
+      max-width: 540px;
+      margin: 40px auto 0;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px;
+      border-radius: 20px
+    }
+
+    .small {
+      opacity: .7;
+      font-size: .9rem;
+      margin-top: 20px
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container nav">
+      <div class="logo-box">
+        <img src="Btinew_alterado.png" alt="BTI Tecnologia e Gestão">
+      </div>
+      <div class="menu">
+        <a href="#servicos">Serviços</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="logo-box logo-dark-bg" style="margin-bottom: 20px;">
+      <img src="Btinew_alterado.png" alt="BTI Tecnologia e Gestão" style="height:80px;">
+    </div>
+    <h1>Tecnologia e Gestão para Empresas que Querem Crescer</h1>
+    <p>Consultoria especializada em ERP, customizações, integrações e desenvolvimento de sistemas sob medida para
+      pequenas e médias empresas.</p>
+    <a class="btn" href="#contato">Solicitar Diagnóstico Gratuito</a>
+  </section>
+
+  <section class="section container" id="servicos">
+    <h2>Consultoria ERP Cigam</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Consultoria ERP</h3>
+        <p>Implantação, parametrização e otimização completa de processos empresariais.</p>
+      </div>
+      <div class="card">
+        <h3>Customizações</h3>
+        <p>Desenvolvimento de melhorias, relatórios e funcionalidades específicas.</p>
+      </div>
+      <div class="card">
+        <h3>Integrações</h3>
+        <p>Conexão entre sistemas, APIs, plataformas e automações.</p>
+      </div>
+      <div class="card">
+        <h3>Sistemas Web</h3>
+        <p>Aplicações administrativas e operacionais sob medida.</p>
+      </div>
+      <div class="card">
+        <h3>Dashboards</h3>
+        <p>Painéis de indicadores para decisões estratégicas.</p>
+      </div>
+      <div class="card">
+        <h3>Suporte Especializado</h3>
+        <p>Atendimento técnico e funcional contínuo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="solucoes">
+    <div class="section-head" style="text-align: center; margin-bottom: 60px;">
+      <h2 style="margin-bottom: 15px;">Nossas Soluções Especializadas</h2>
+      <p style="max-width: 700px; margin: auto; font-size: 1.1rem; opacity: 0.8;">Sistemas sob medida projetados para
+        resolver desafios específicos de cada setor.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <div style="font-size: 2.5rem; margin-bottom: 15px;">💈</div>
+        <h3>ShopBarber</h3>
+        <p>Gestão completa para salões e barbearias. Controle de agendamentos, financeiro, estoque e comissões de
+          profissionais em uma única plataforma.</p>
+        <a href="/shopbarber/public_html" class="btn"
+          style="padding: 12px 24px; font-size: 0.9rem; margin-top: 20px; background: var(--primary);">Conhecer
+          Sistema</a>
+      </div>
+      <div class="card">
+        <div style="font-size: 2.5rem; margin-bottom: 15px;">📋</div>
+        <h3>Auxílio Maternidade</h3>
+        <p>Sistema especializado no controle de contratos e processos de auxílio maternidade. Gestão de documentos e
+          acompanhamento de benefícios.</p>
+        <a href="/auxilio_maternidade" class="btn"
+          style="padding: 12px 24px; font-size: 0.9rem; margin-top: 20px; background: var(--primary);">Conhecer
+          Sistema</a>
+      </div>
+      <div class="card">
+        <div style="font-size: 2.5rem; margin-bottom: 15px;">📈</div>
+        <h3>PriceSmart</h3>
+        <p>Otimize seus lucros com Inteligência Artificial. Precificação dinâmica baseada em análise de custos real e
+          integração total para PMEs.</p>
+        <a href="/PriceSmart" class="btn"
+          style="padding: 12px 24px; font-size: 0.9rem; margin-top: 20px; background: var(--primary);">Conhecer
+          Sistema</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="sobre">
+    <div class="container">
+      <h2>Sobre a BTI</h2>
+      <p style="max-width:800px;margin:auto;text-align:center">A BTI Tecnologia e Gestão atua ajudando empresas a
+        organizar processos, aumentar produtividade e obter controle total das operações através de soluções
+        tecnológicas eficientes e sob medida.</p>
+    </div>
+  </section>
+
+  <section class="section container" id="diferenciais">
+    <h2>Diferenciais</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Foco em resultado</h3>
+        <p>Soluções práticas que geram ganhos reais.</p>
+      </div>
+      <div class="card">
+        <h3>Experiência de mercado</h3>
+        <p>Conhecimento técnico e funcional.</p>
+      </div>
+      <div class="card">
+        <h3>Atendimento personalizado</h3>
+        <p>Cada projeto é único.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <h2>Benefícios para sua empresa</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>✔ Mais produtividade</h3>
+        </div>
+        <div class="card">
+          <h3>✔ Redução de custos</h3>
+        </div>
+        <div class="card">
+          <h3>✔ Controle financeiro</h3>
+        </div>
+        <div class="card">
+          <h3>✔ Processos organizados</h3>
+        </div>
+        <div class="card">
+          <h3>✔ Decisões com dados</h3>
+        </div>
+        <div class="card">
+          <h3>✔ Crescimento sustentável</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta" id="contato">
+    <div class="container">
+      <h2>Fale com a BTI Tecnologia e Gestão</h2>
+      <p>Explique sua necessidade e receba uma proposta personalizada.</p>
+      <form id="contactForm">
+        <input type="text" name="nome" id="nome" placeholder="Nome" required>
+        <input type="text" name="empresa" id="empresa" placeholder="Empresa">
+        <input type="tel" name="telefone" id="telefone" placeholder="Telefone ou WhatsApp" required>
+        <textarea name="necessidade" id="necessidade" placeholder="Descreva sua necessidade"></textarea>
+        <button class="btn" type="submit">Solicitar Contato</button>
+      </form>
+      <p class="small">Atendimento nacional • Projetos sob medida • Sem compromisso</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="logo-box logo-dark-bg">
+      <img src="Btinew_alterado.png" alt="BTI Tecnologia e Gestão">
+    </div>
+    <p>© 2026 BTI Tecnologia e Gestão — Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const btn = this.querySelector('button');
+      const originalBtnText = btn.innerText;
+
+      btn.innerText = 'Enviando...';
+      btn.disabled = true;
+
+      // 1. Enviar para o PHP (E-mail)
+      fetch('process_contact.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .catch(error => console.log('Erro no envio do e-mail:', error))
+        .finally(() => {
+          // 2. Redirecionar para o WhatsApp independente do sucesso do e-mail
+          // (Garante que o cliente consiga o contato mesmo em ambiente local sem SMTP)
+
+          const nome = formData.get('nome');
+          const empresa = formData.get('empresa');
+          const telefone = formData.get('telefone');
+          const necessidade = formData.get('necessidade');
+
+          const whatsNumber = "5551991009285";
+          let message = `Olá! Vi o site de Consultoria BTI e gostaria de mais informações.\n\n`;
+          message += `*Nome:* ${nome}\n`;
+          if (empresa) message += `*Empresa:* ${empresa}\n`;
+          message += `*Telefone:* ${telefone}\n`;
+          message += `*Mensagem:* ${necessidade}`;
+
+          const whatsUrl = `https://api.whatsapp.com/send?phone=${whatsNumber}&text=${encodeURIComponent(message)}`;
+
+          // Pequeno delay para percepção do "Enviando"
+          setTimeout(() => {
+            window.location.href = whatsUrl;
+            btn.innerText = originalBtnText;
+            btn.disabled = false;
+          }, 1000);
+        });
+    });
+  </script>
+
+</body>
+
+</html>
